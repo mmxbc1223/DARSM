@@ -64,10 +64,8 @@ def train_epoch(model, train_dataloader, optimizer, scheduler='full'):
         total_loss = loss
         total_loss.backward()
         tr_loss += total_loss.item()
-        #convert_models_to_fp32(model)
         optimizer.step()
         scheduler.step()
-        #clip.model.convert_weights(model)
     tr_loss /= step
     train_cl_loss /= step
     train_task_loss /= step
